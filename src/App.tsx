@@ -58,7 +58,7 @@ const Game = () => {
       >
         <Dummy
           physics="character"
-          metalnessFactor={-0.5}
+          metalnessFactor={-2}
           roughnessFactor={0}
           y={44.58}
           // 4 arguments of lookTo are: x, y, z, and alpha. Smaller alpha means slower speed.
