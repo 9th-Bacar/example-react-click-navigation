@@ -5,7 +5,8 @@ import {
   SvgMesh,
   ThirdPersonCamera,
   World,
-  usePreload
+  usePreload,
+  Audio
 } from "lingo3d-react"
 import { useState } from "react"
 import "./App.css"
@@ -13,7 +14,6 @@ import "./App.css"
 // Game world component
 // 场景组件
 const Game = () => {
-
   // When user clicks on map model, set arrow position to clicked position
   // 点击地图模型时，设置箭头位置为点击位置
   const [arrowPosition, setArrowPosition] = useState({ x: 0, y: 0, z: 0 })
@@ -73,7 +73,17 @@ const Game = () => {
           // animation depends on running state
           // 跑步状态决定动画
           animation={running ? "running" : "idle"}
-        />
+        >
+          {/* sound of footsteps that follows the dummy */}
+          {/* 跟随角色的脚步声 */}
+          <Audio
+            src="footsteps.wav"
+            autoplay
+            loop
+            stopped={!running}
+            playbackRate={2.5}
+          />
+        </Dummy>
       </ThirdPersonCamera>
 
       {/* When running, render an SVG arrow mesh */}
@@ -101,7 +111,10 @@ const Game = () => {
 // App component renders preload progress
 // App组件渲染预加载进度
 const App = () => {
-  const progress = usePreload(["stadium.glb"], "1.2mb")
+  const progress = usePreload(
+    ["stadium.glb", "footsteps.wav", "arrow.svg", "env.jpg"],
+    "1.2mb"
+  )
 
   if (progress < 100)
     return (
