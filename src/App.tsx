@@ -24,13 +24,8 @@ const Game = () => {
 
   return (
     // World has white fog, environment image based lighting, and bloom effect
-    // 场景有白色雾效，基于图片的环境光照，并且有泛光效果
-    <World
-      defaultFog="white"
-      defaultLight="env.jpg"
-      bloomStrength={1}
-      bloomThreshold={0.5}
-    >
+    // 场景有基于图片的环境光照，并且有泛光效果
+    <World defaultLight="env.jpg" bloomStrength={1} bloomThreshold={0.5}>
       {/* Map model; when clicked, set arrow position and running state */}
       {/* 地图模型，点击时设置箭头位置以及跑步状态 */}
       <Model
